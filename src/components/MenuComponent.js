@@ -6,13 +6,6 @@ import DishDetail from './DishdetailComponent';
 
 class Menu extends Component{
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-           selectedDish: null
-        }
-    }
     onDishSelected(dish){
         this.setState({ selectedDish:dish });
     }
@@ -35,7 +28,7 @@ class Menu extends Component{
                 <div key={dish.id} className="col-12 mt-5">
                     <div  className="col-12 col-md-5 m-1">
                         <Card key={dish.id}
-                          onClick={() => this.onDishSelected(dish)}>
+                          onClick={() => this.props.onClick(dish.id)}>
                           <CardImg width="100%" src={dish.image} alt={dish.name} />
                           <CardImgOverlay>
                               <CardTitle>{dish.name}</CardTitle>
@@ -51,9 +44,6 @@ class Menu extends Component{
                 <div className="row">
                         {menu}
                 </div>
-                <div  className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.state.selectedDish)}
-                 </div>
             </div>
         );
     }

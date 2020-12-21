@@ -4,9 +4,6 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody,
     CardTitle } from 'reactstrap';
 
 class DishDetail extends Component{
-    constructor(props){
-            super(props);
-        }
     renderComments(allComments){
         if(allComments != null){
                     const comms = allComments.map((comm)=>{
@@ -14,7 +11,7 @@ class DishDetail extends Component{
                             <div key={comm.id} className="col-12 mt-5">
                                 <ul>
                                     <li>{comm.comment}</li>
-                                    <li>-- {comm.author}, {comm.date}</li>
+                                    <li>-- {comm.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comm.date)))}</li>
                                 </ul>
                             </div>
                         );
@@ -39,9 +36,8 @@ class DishDetail extends Component{
     }
     render(){
 
-            const dish = this.props.selectedDish;
-
-
+            const dish = this.props.dish;
+            if (dish != null){
             return (
                 <div className="container">
                     <div className="row">
@@ -55,7 +51,10 @@ class DishDetail extends Component{
                             {this.renderComments(dish.comments)}
                     </div>
                 </div>
-            );
+            );}
+            else{
+                return ( <div></div> );
+            }
         }
 }
 
