@@ -3,6 +3,7 @@ import { Media } from 'reactstrap';
 import { Card, CardImg, CardText, CardBody,
     CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentFormComponent';
 
 
     function RenderComments ({allComments}){
@@ -24,6 +25,7 @@ import { Link } from 'react-router-dom';
                             <div>
                             {comms}
                             </div>
+                            <CommentForm />
                         </div>
 
 
